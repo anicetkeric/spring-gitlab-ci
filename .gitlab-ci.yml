@@ -19,6 +19,7 @@ production:
     - docker:dind    
   script:
   - docker build -t demo-cicd-image .
+  - docker run -d -p 8080:8090 demo-cicd-image
   only:
   - main
 
