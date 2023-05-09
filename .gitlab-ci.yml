@@ -6,7 +6,7 @@ stages:
 
 build:
   stage: build
-  script: mvn clean install
+  script: $MAVEN_HOME/bin/mvn clean install
   artifacts:
     paths:
       - target/spring-gitlab-ci*
