@@ -1,4 +1,3 @@
-
 stages:
   - build
   - deploy
@@ -16,6 +15,8 @@ production:
   stage: deploy
   image: 
     name: docker:latest  
+  services:
+    - docker:dind    
   script:
   - docker build -t demo-cicd-image .
   only:
