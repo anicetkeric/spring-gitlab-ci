@@ -1,4 +1,4 @@
-image: openjdk:17-alpine
+image: maven:3.8.5-openjdk-17
 
 stages:
   - build
@@ -6,7 +6,7 @@ stages:
 
 build:
   stage: build
-  script: $MAVEN_HOME/bin/mvn clean install
+  script: mvn clean install
   artifacts:
     paths:
       - target/spring-gitlab-ci*
