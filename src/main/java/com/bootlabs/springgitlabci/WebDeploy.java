@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.text.MessageFormat;
 import java.time.LocalDateTime;
 
 @RestController
@@ -12,7 +13,7 @@ public class WebDeploy {
 
     @GetMapping("/deploy")
     public String index() {
-        return "Web deploy ok: " + LocalDateTime.now();
+        return MessageFormat.format("Web deploy ok:  {}", LocalDateTime.now());
     }
 
 }
