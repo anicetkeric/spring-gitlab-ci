@@ -2,6 +2,17 @@ stages:
   - build
   - deploy
 
+# This fixes "error during connect: Post http://docker:2375/v1.40/auth: dial tcp: lookup docker on <Serverip> no such host"
+variables:
+  # DOCKER_HOST variable tells docker how to connect to the daemon (a background service running inside the Docker VM)
+  DOCKER_HOST: tcp://docker:2375/
+  # Environemt Variable for docker:dind service explaining to use overlay2 as supporting driver for docker
+  # https://docs.docker.com/storage/storagedriver/overlayfs-driver/
+  DOCKER_DRIVER: overlay2
+  # We need to disable TLS (https://about.gitlab.com/blog/2019/07/31/docker-in-docker-with-docker-19-dot-03/#disable-tls)
+  # to fix the error "docker: Cannot connect to the Docker daemon at tcp://docker:2375. Is the docker daemon running?"
+  DOCKER_TLS_CERTDIR: ""
+
 build:
   stage: build
   image: 
@@ -17,10 +28,6 @@ production:
     name: docker:latest  
   services:
     - docker:dind   
-  variables:
-    DOCKER_HOST: tcp://docker:2378
-    DOCKER_DRIVER: overlay2
-    DOCKER_TLS_CERTDIR: ""
   script:
   - docker build -t demo-cicd-image .
   - docker run -d -p 8080:8090 demo-cicd-image
