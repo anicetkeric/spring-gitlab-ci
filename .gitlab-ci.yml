@@ -27,10 +27,12 @@ production:
   image: 
     name: docker:latest  
   services:
-    - docker:dind   
+    - docker:dind 
+  variables:
+    APP_IMAGE: demo-cicd-image     
   script:
-  - docker build -t demo-cicd-image .
-  - docker run -d -p 8090:8080 demo-cicd-image
+  - docker build -t $APP_IMAGE .
+  - docker run -d -p 8090:8080 $APP_IMAGE
   only:
   - main
 
