@@ -16,7 +16,10 @@ production:
   image: 
     name: docker:latest  
   services:
-    - docker:dind    
+    - docker:dind   
+  variables:
+    DOCKER_HOST: tcp://docker:2375
+    DOCKER_DRIVER: overlay2
   script:
   - docker build -t demo-cicd-image .
   - docker run -d -p 8080:8090 demo-cicd-image
