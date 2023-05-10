@@ -32,7 +32,7 @@ production:
     APP_IMAGE: demo-cicd-image     
   script:
   - docker build -t $APP_IMAGE .
-  - docker run -d -p 8090:8080 $APP_IMAGE
+  - docker run -d -p 8090:8080 $APP_IMAGE /script/to/run/tests
   only:
   - main
 
