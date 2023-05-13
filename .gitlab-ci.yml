@@ -13,6 +13,11 @@ variables:
   # to fix the error "docker: Cannot connect to the Docker daemon at tcp://docker:2375. Is the docker daemon running?"
   DOCKER_TLS_CERTDIR: ""
 
+services:
+    - name: 20.10.16-dind
+      entrypoint: ["env", "-u", "DOCKER_HOST"]
+      command: ["dockerd-entrypoint.sh"]  
+
 build:
   stage: build
   image: 
@@ -26,8 +31,6 @@ production:
   stage: deploy
   image: 
     name: docker:20.10.16  
-  services:
-    - docker:20.10.16-dind 
   variables:
     APP_IMAGE: demo-cicd-image     
   script:
