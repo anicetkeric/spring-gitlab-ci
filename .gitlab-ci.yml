@@ -14,7 +14,7 @@ variables:
   DOCKER_TLS_CERTDIR: ""
 
 services:
-    - name: 20.10.16-dind
+    - name: docker:20.10.16-dind
       entrypoint: ["env", "-u", "DOCKER_HOST"]
       command: ["dockerd-entrypoint.sh"]  
 
