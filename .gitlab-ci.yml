@@ -25,9 +25,9 @@ build:
 production:
   stage: deploy
   image: 
-    name: docker:latest  
+    name: docker:20.10.16  
   services:
-    - docker:dind 
+    - docker:20.10.16-dind 
   variables:
     APP_IMAGE: demo-cicd-image     
   script:
