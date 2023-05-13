@@ -25,7 +25,7 @@ production:
     DOCKER_TLS_CERTDIR: ""
     APP_IMAGE: demo-cicd-image  
   services:
-    - name: docker:20.10.16-dind
+    - name: registry.hub.docker.com/library/docker:20.10.16-dind
       alias: docker
       # in our experience although you'd assume this would be sufficient, this did 
       # nothing to prevent connection errors without `DOCKER_TLS_CERTDIR` being set 
