@@ -13,7 +13,7 @@ public class WebDeploy {
 
     @GetMapping("/deploy")
     public String index() {
-        return MessageFormat.format("Web deploy ok:  {}", LocalDateTime.now());
+        return MessageFormat.format("Web deploy ok: {0}", LocalDateTime.now());
     }
 
 }
