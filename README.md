@@ -6,7 +6,7 @@ How to use GitLab CI/CD to build, test and deploy Spring boot API using Docker.
 
 ### Documentation
 
-* [Publication link](https://)
+* [Publication link](https://boottechnologies-ci.medium.com/spring-boot-api-deployment-using-gitlab-ci-cd-and-docker-e2ebd88eb8af)
 
 ## Author
 
